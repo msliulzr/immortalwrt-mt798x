@@ -1,0 +1,37 @@
+/dts-v1/;
+#include "mt7981-one_r35_mini_base.dtsi"
+
+/ {
+	model = "ONE R35 MINI (usb3)";
+        gpio-export {
+                compatible = "gpio-export";
+                #size-cells = <0>;
+
+                usb3 {
+                        gpio-export,name = "usb3_on";
+                        gpio-export,output = <1>;
+                        gpios = <&pio 12 GPIO_ACTIVE_HIGH>;
+                };
+
+                5G_power {
+                        gpio-export,name = "5G_power";
+                        gpio-export,output = <1>;
+                        gpios = <&pio 13 GPIO_ACTIVE_HIGH>;
+                };
+
+                5G_reset {
+                        gpio-export,name = "5G_reset";
+                        gpio-export,output = <1>;
+                        gpios = <&pio 11 GPIO_ACTIVE_HIGH>;
+                };
+        };
+};
+
+&xhci {
+        mediatek,u3p-dis-msk = <0x0>;
+        phys = <&u2port0 PHY_TYPE_USB2>,
+               <&u3port0 PHY_TYPE_USB3>;
+        vusb33-supply = <&reg_3p3v>;
+        vbus-supply = <&reg_5v>;
+        status = "okay";
+};

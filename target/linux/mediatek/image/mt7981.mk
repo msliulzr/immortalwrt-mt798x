@@ -462,6 +462,39 @@ define Device/xiaomi_mi-router-ax3000t-an8855
 endef
 TARGET_DEVICES += xiaomi_mi-router-ax3000t-an8855
 
+define Device/one_r35_mini_usb3
+  DEVICE_VENDOR := ONE
+  DEVICE_MODEL := R35 MINI (usb3)
+  DEVICE_DTS := mt7981-one_r35_mini_usb3
+  DEVICE_DTS_DIR := $(DTS_DIR)/mediatek
+  SUPPORTED_DEVICES := one,r3_mini-snand
+  DEVICE_PACKAGES := $(MT7981_USB_PKGS)
+  UBINIZE_OPTS := -E 5
+  BLOCKSIZE := 128k
+  PAGESIZE := 2048
+  IMAGE_SIZE := 65536k
+  KERNEL_IN_UBI := 1
+  IMAGES := sysupgrade.tar
+  IMAGE/sysupgrade.tar := sysupgrade-tar | append-metadata
+endef
+TARGET_DEVICES += one_r35_mini_usb3
+
+define Device/one_r35_mini_pcie
+  DEVICE_VENDOR := ONE
+  DEVICE_MODEL := R35 MINI (pcie)
+  DEVICE_DTS := mt7981-one_r35_mini_pcie
+  DEVICE_DTS_DIR := $(DTS_DIR)/mediatek
+  SUPPORTED_DEVICES := one,r35_mini-snand
+  DEVICE_PACKAGES := $(MT7981_USB_PKGS)
+  UBINIZE_OPTS := -E 5                                                                                                                                                 BLOCKSIZE := 128k
+  PAGESIZE := 2048
+  IMAGE_SIZE := 65536k
+  KERNEL_IN_UBI := 1
+  IMAGES := sysupgrade.tar
+  IMAGE/sysupgrade.tar := sysupgrade-tar | append-metadata
+endef
+TARGET_DEVICES += one_r35_mini_pcie
+
 define Device/glinet_gl-mt3000
   DEVICE_VENDOR := GL.iNet
   DEVICE_MODEL := GL-MT3000
