@@ -30,3 +30,7 @@
         vbus-supply = <&reg_5v>;
         status = "okay";
 };
+
+&pcie {
+        status = "okay";
+};
